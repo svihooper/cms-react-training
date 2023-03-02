@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Detail from '@/components/Detail'
+import Button from '@/components/Button'
+import moment from 'moment/moment'
 import styles from '@/styles/Comics.module.css'
 
 export default function Comic({ comic }) {
@@ -13,12 +15,13 @@ export default function Comic({ comic }) {
             />
 
             <div className={styles.detail}>
+                <Button />
                 <div className={styles.detailInner}>
                     <h3 className={styles.title}>{comic.title}</h3>
 
                     <Detail 
                         issue={comic.issueNumber}
-                        publishDate={comic.publishDate}
+                        publishDate={moment(comic.publishDate).format('LL')}
                         creators={comic.creators}
                     />
                 </div>

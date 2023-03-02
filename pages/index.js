@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import useSWR from 'swr'
 import styles from '@/styles/Home.module.css'
 import Comic from '@/components/Comic.js'
@@ -14,21 +15,26 @@ export default function Home() {
   if (!data) return null
 
   return (
-    <main className={`${styles.main} ${jetbrains_mono.className}`}>
-      <div className={styles.header}>
-        <h1>React Exercise 1 - Comic Grid</h1>
-      </div>
+    <>
+      <Head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      </Head>
+      <main className={`${styles.main} ${jetbrains_mono.className}`}>
+        <div className={styles.header}>
+          <h1>React Exercise 1 - Comic Grid</h1>
+        </div>
 
-      <ul style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        justifyContent: 'center',
-        gap: '25px'
-      }}>
-        {data.map((comic) => (
-          <Comic key={comic.id} comic={comic} /> 
-        ))}
-      </ul>
-    </main>
+        <ul style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          justifyContent: 'center',
+          gap: '25px'
+        }}>
+          {data.map((comic) => (
+            <Comic key={comic.id} comic={comic} /> 
+          ))}
+        </ul>
+      </main>
+    </>
   )
 }

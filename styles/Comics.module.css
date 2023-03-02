@@ -1,5 +1,9 @@
 .comic {
-    
+    --color-body: #2f2c2d;
+    --color-background: #dfd9cc;
+    --color-button-active: #b8212a;
+    display: flex;
+    flex-direction: column;
 }
 
 .comic img {
@@ -16,14 +20,15 @@
 .detail {
     position: relative;
     padding: 4px;
-    color: #2f2c2d;
-    background: #dfd9cc;
-    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+    height: 100%;
+    color: var(--color-body);
+    background: var(--color-background);
 }
 
 .detailInner {
     padding: 20px;
-    border: 2px solid #2f2c2d;
+    height: 100%;
+    border: 2px solid var(--color-body);
 }
 
 .detailInfo {
@@ -31,9 +36,39 @@
 }
 
 .detailInfo > li {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .label {
-    font-weight: bold;
+    font-weight: 900;
+}
+
+.button {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-body);
+    background: var(--color-background);
+    border: 2px solid var(--color-body);
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: background 500ms, color 500ms;
+}
+
+.buttonActive {
+    color: white;
+    background: var(--color-button-active);
+}
+
+.button > span {
+    position: relative;
+    top: 1px;
+    font-variation-settings: 'FILL' 1
 }
