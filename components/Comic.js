@@ -4,25 +4,26 @@ import Button from '@/components/Button'
 import moment from 'moment/moment'
 import styles from '@/styles/Comics.module.css'
 
-export default function Comic({ comic }) {
+export default function Comic({ data : { thumbnail, title, issueNumber, creators } }) {
     return (
         <div className={styles.comic}>
-            <Image 
-                src={comic.thumbnail}
-                alt={comic.title}
-                width={400}
-                height={600}
-            />
+            { thumbnail &&
+                <Image 
+                    src={`${thumbnail.path}.${thumbnail.extension}`}
+                    alt={title}
+                    width={400}
+                    height={600}
+                />
+            }
 
             <div className={styles.detail}>
                 <Button />
                 <div className={styles.detailInner}>
-                    <h3 className={styles.title}>{comic.title}</h3>
+                    <h3 className={styles.title}>{title}</h3>
 
                     <Detail 
-                        issue={comic.issueNumber}
-                        publishDate={moment(comic.publishDate).format('LL')}
-                        creators={comic.creators}
+                        issueNumber={issueNumber}
+                        creators={creators}
                     />
                 </div>
             </div>
