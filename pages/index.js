@@ -4,11 +4,12 @@ import styles from '@/styles/Home.module.css'
 import Comic from '@/components/Comic.js'
 import { JetBrains_Mono } from 'next/font/google'
 const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'] })
-
+const COMIC_URL = "https://gateway.marvel.com:443/v1/public/comics"
+const API_KEY = "0c764b563c22abe496ef7f5fa513ed08";
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Home() {
-  const { data, error, isLoading } = useSWR('/api/comics', fetcher)
+  const { data, error, isLoading } = useSWR(`/api/comics`, fetcher)
 
   if (error) return <div>Failed to load</div>
   if (isLoading) return <div>Loading...</div>
