@@ -1,10 +1,28 @@
+import React from 'react'
 import Image from 'next/image'
-import Detail from '@/components/Detail'
-import Button from '@/components/Button'
-import moment from 'moment/moment'
-import styles from '@/styles/Comics.module.css'
+import Detail from '../components/Detail'
+import Button from '../components/Button'
+import styles from '../styles/Comics.module.css'
 
-export default function Comic({ data : { thumbnail, title, issueNumber, creators } }) {
+type Comic = {
+    data: {
+        title: string,
+        thumbnail?: {
+            path: string,
+            extension: string
+        },
+        issueNumber: string,
+        publishDate?: string,
+        creators: {
+            available: number,
+            items: { name: string }[],
+        }
+    }
+}
+
+export default function Comic({ 
+    data : { title, thumbnail, issueNumber, publishDate, creators } 
+}: Comic) {
     return (
         <div className={styles.comic}>
             { thumbnail &&

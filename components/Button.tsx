@@ -1,5 +1,5 @@
-import styles from '@/styles/Comics.module.css'
-import { useState } from 'react'
+import React, { useState } from 'react';
+import styles from '../styles/Comics.module.css'
 
 export default function Button() {
     const [isActive, setIsActive] = useState(false);

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import useSWR from 'swr'
-import styles from '@/styles/Home.module.css'
-import Comic from '@/components/Comic.js'
+import styles from '../styles/Home.module.css'
+import Comic from '../components/Comic'
 import { JetBrains_Mono } from 'next/font/google'
 const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'] })
 const fetcher = (url) => fetch(url).then((res) => res.json())

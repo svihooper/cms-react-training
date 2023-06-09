@@ -1,6 +1,16 @@
-import styles from '@/styles/Comics.module.css'
+import React from 'react';
+import styles from '../styles/Comics.module.css';
 
-export default function Detail({ issueNumber, publishDate, creators }) {
+type ComicDetail = {
+    issueNumber: string,
+    publishDate?: string,
+    creators: {
+        available: number,
+        items: { name: string }[],
+    }
+}
+
+export default function Detail({ issueNumber, publishDate, creators }: ComicDetail) {
     return (
         <>
             <ul className={styles.detailInfo}>
@@ -15,10 +25,9 @@ export default function Detail({ issueNumber, publishDate, creators }) {
                         {publishDate}
                     </li>
                 }
-
                 { creators.available > 0 && 
                     <li>
-                        <span className={styles.label}>Creators: </span> 
+                        <span className={styles.label}>Creators:</span>
                         {creators.items.map((creator) => creator.name).join(', ')}
                     </li>
                 }
