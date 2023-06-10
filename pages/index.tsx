@@ -1,13 +1,21 @@
-import React from 'react'
+// TO DO
+// - DropdownFilter component is already being imported
+// Add DropdownFilter components in for both character and creator key/values
+
+import React, { useState } from 'react'
 import useSWR from 'swr'
 import styles from '../styles/Home.module.css'
 import Comic from '../components/Comic'
+import { DropdownFilter } from '../components/DropdownFilter';
 import { JetBrains_Mono } from 'next/font/google'
+import { useRouter } from "next/router";
+
 const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'] })
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Home() {
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-  const { data, error, isLoading } = useSWR(`/api/getComics`, fetcher)
+  const { asPath } = useRouter();
+  const { data, error, isLoading } = useSWR(`/api/getComics${asPath}`, fetcher)
 
   if (error) return <div>Failed to load</div>
   if (isLoading) return <div>Loading...</div>
