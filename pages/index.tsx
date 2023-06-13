@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import useSWR from 'swr'
 import styles from '../styles/Home.module.css'
 import Comic from '../components/Comic'
-import { DropdownFilter } from '../components/DropdownFilter';
+import { Filters } from '../components/Filters';
 import { JetBrains_Mono } from 'next/font/google'
 import { useRouter } from "next/router";
 
@@ -24,23 +24,25 @@ export default function Home() {
   const comics = data.data.data.results;
 
   return (
-    <>
       <main className={`${styles.main} ${jetbrains_mono.className}`}>
         <div className={styles.header}>
           <h1>React Exercise 1 - Comic Grid</h1>
         </div>
 
-        <ul style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          justifyContent: 'center',
-          gap: '25px'
-        }}>
-          { comics.map((comic) => (
-            <Comic key={comic.id} data={comic} /> 
-          )) }
-        </ul>
+        <Filters />
+
+        <section className="comics-wrapper">
+          <ul style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            justifyContent: 'center',
+            gap: '25px'
+          }}>
+            { comics.map((comic) => (
+              <Comic key={comic.id} data={comic} /> 
+            )) }
+          </ul>
+        </section>
       </main>
-    </>
   )
 }

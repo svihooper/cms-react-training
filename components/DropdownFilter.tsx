@@ -1,22 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Dispatch, SetStateAction } from "react";
 
 type Props = {
     label : string,
-    values : { name: string, id: string }[]
+    options : { label: string, value: string }[],
+    value : string,
+    setValue : Dispatch<SetStateAction<string>>,
+    onChange : (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-export const DropdownFilter = ({ label, values }: Props) => {
-    const [value, setValue] = useState("");
-    const ref = useRef<HTMLSelectElement>(null!);
+export const DropdownFilter = ({ label, options, value, onChange }: Props) => {
 
     return (
         <select
-            ref={ref}
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={onChange}
         >
-        { values.map(({ name, id }) => {
-            return ( <option value={id}>{name}</option> )
+        { options.map(({ label: name, value: id }) => {
+            return ( <option value={id} key={id}>{name}</option> )
         }) }
         </select>
     )
