@@ -26,16 +26,20 @@ export default function Comic({
     return (
         <div className={styles.comic}>
             { thumbnail &&
-                <Image 
-                    src={`${thumbnail.path}.${thumbnail.extension}`}
-                    alt={title}
-                    width={400}
-                    height={600}
-                />
+                <div className={styles.imageWrapper}>
+                    <Image 
+                        className={styles.img}
+                        src={`${thumbnail.path}.${thumbnail.extension}`}
+                        alt={title}
+                        width={183}
+                        height={276}
+                    />
+
+                    <Button />
+                </div>
             }
 
             <div className={styles.detail}>
-                <Button />
                 <div className={styles.detailInner}>
                     <h3 className={styles.title}>{title}</h3>
 

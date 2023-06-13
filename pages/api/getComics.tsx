@@ -3,7 +3,11 @@ import { createHash } from "node:crypto";
 
 export default async function getComics(req, res) {
     const queryParams = req.query;
-    const queryString = Object.keys(queryParams).map((key) => `${key}=${queryParams[key]}`)
+    const queryString = Object.keys(queryParams).map((key) => {
+        if (queryParams[key] !== '') {
+            return `${key}=${queryParams[key]}`
+        }
+    })
 
     const ts = Date.now();
     const HASH = createHash('md5').update(ts+process.env.PRIVATE_API_KEY+process.env.NEXT_PUBLIC_API_KEY).digest('hex');

@@ -1,3 +1,28 @@
+.filterWrapper {
+    margin-bottom: 40px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font: normal normal bold 14px/16px Montserrat;
+    background: var(--background-dark);
+    color: var(--color-light);
+}
+
 .filterLabel {
     padding-right: 10px;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+}
+
+.filters select {
+    padding: 7px 10px;
+    min-width: 245px;
+    font: normal normal normal 16px/16px Karla;
+    color: var(--color-light);
+    border: 1px solid var(--border-color);
+    background: var(--background-dark);
+    border-radius: 3px;
 }

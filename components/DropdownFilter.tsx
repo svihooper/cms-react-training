@@ -1,22 +1,23 @@
-import React, { useState, useRef, Dispatch, SetStateAction } from "react";
+import React from "react";
 
 type Props = {
-    label : string,
-    options : { label: string, value: string }[],
-    value : string,
-    setValue : Dispatch<SetStateAction<string>>,
-    onChange : (e: React.ChangeEvent<HTMLSelectElement>) => void
+    className?: string,
+    label: string,
+    options: { label: string, value: string }[],
+    value: string | string[],
+    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-export const DropdownFilter = ({ label, options, value, onChange }: Props) => {
+export const DropdownFilter = ({ className, label, options, value, onChange }: Props) => {
 
     return (
         <select
+            className={className}
             value={value}
             onChange={onChange}
         >
-        { options.map(({ label: name, value: id }) => {
-            return ( <option value={id} key={id}>{name}</option> )
+        { options.map(({ label, value }) => {
+            return ( <option value={value} key={value}>{label}</option> )
         }) }
         </select>
     )

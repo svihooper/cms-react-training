@@ -1,0 +1,10 @@
+.favoritesWrapper {
+    padding: 30px;
+    background: #222222;
+    color: #F8F8F2;
+}
+
+.favoritesWrapper h3 {
+    font: normal normal 900 25px/30px Montserrat;
+    letter-spacing: 0.25px;
+}

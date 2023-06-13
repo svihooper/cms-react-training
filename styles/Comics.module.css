@@ -4,35 +4,75 @@
     --color-button-active: #b8212a;
     display: flex;
     flex-direction: column;
-}
+    font-family: var(--font-montserrat);
 
-.comic img {
-    width: 100%;
-    height: auto;
-}
+    & .imageWrapper {
+        position: relative;
+        margin-bottom: 30px;
 
-.title {
-    margin-bottom: 10px;
-    font-size: 22px;
-    font-weight: bold;
+        & .img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0px 5px 15px #00000029;
+        }
+
+        & .button {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            color: var(--color-light);
+            background: var(--background-dark);
+            border: 3px solid transparent;
+            border-radius: 50%;
+            box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+            transform: translate(-50%);
+            cursor: pointer;
+            transition: background 500ms, color 500ms, border 500ms;
+        }
+    }
 }
 
 .detail {
     position: relative;
     padding: 4px;
     height: 100%;
-    color: var(--color-body);
-    background: var(--color-background);
+    color: var(--color-dark);
+    font-size: 16px;
+    line-height: 1.2;
+
+    & .title {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    & .label {
+        padding-right: 5px;
+        font-size: 16px;
+        line-height: 1.2;
+        font-family: var(--font-karla);
+        font-weight: 900;
+    }
+
+    & .detailInfo > li {
+        
+    }
 }
 
+
+
 .detailInner {
-    padding: 20px;
-    height: 100%;
-    border: 2px solid var(--color-body);
+    
 }
 
 .detailInfo {
     list-style: none;
+    font-family: var(--font-karla);
 }
 
 .detailInfo > li {
@@ -40,31 +80,18 @@
 }
 
 .label {
-    font-weight: 900;
 }
 
-.button {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    color: var(--color-body);
-    background: var(--color-background);
-    border: 2px solid var(--color-body);
-    border-radius: 50%;
-    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
-    transform: translateX(-50%);
-    cursor: pointer;
-    transition: background 500ms, color 500ms;
+@media (hover: hover) {
+    .button:hover {
+        background: var(--color-alt);
+        border: 3px solid var(--color-light);
+    }
 }
 
 .buttonActive {
-    color: white;
-    background: var(--color-button-active);
+    background: var(--color-alt);
+    border: 3px solid var(--color-light);
 }
 
 .button > span {
