@@ -2,18 +2,20 @@
 // - DropdownFilter component is already being imported
 // Add DropdownFilter components in for both character and creator key/values
 
-import React from 'react'
+import React, { useState, useEffect, createContext, useContext, useCallback, useMemo } from 'react'
 import styles from '../styles/Home.module.css'
 import { Comics } from '../components/Comics'
 import { Filters } from '../components/Filters';
 import { Favorites } from '../components/Favorites';
-import { JetBrains_Mono } from 'next/font/google'
 import { useRouter } from "next/router";
 
-const jetbrains_mono = JetBrains_Mono({ subsets: ['latin'] })
+const FavoritesContext = createContext({
+  favorites: [],
+  setFavorites: () => {}
+});
 
 export default function Home() {
-  const router = useRouter();
+  const [favorites, setFavorites] = useState([]);
 
   return (
       <main className={`${styles.main}`}>
@@ -35,10 +37,14 @@ export default function Home() {
         <section className={styles.comicsListView}>
           <div className={styles.mainPane}>
             <Filters />
-            <Comics />
+            <Comics 
+            />
           </div>
           <div className={styles.favoritesPane}>
-            <Favorites />
+            <section className={styles.favoritesWrapper}>
+                <h3>Favorites</h3>
+
+            </section>
           </div>
         </section>
       </main>

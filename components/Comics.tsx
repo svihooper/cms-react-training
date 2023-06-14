@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import useSWR from 'swr'
 import { useRouter } from "next/router";
 import Comic from '../components/Comic'
@@ -13,10 +13,8 @@ export const Comics = () => {
     if (error) return <div>Failed to load</div>
     if (isLoading) return <div>Loading...</div>
     if (!data) return null
-  
-    const comics = data.data.data.results;
-    console.log("🚀 ~ file: Comics.tsx:18 ~ Comics ~ comics:", comics);
 
+    const comics = data.data.data.results;
 
     return (
         <section className="comics-wrapper">
@@ -28,7 +26,10 @@ export const Comics = () => {
                     gap: '25px'
                 }}>
                     { comics.map((comic) => (
-                        <Comic key={comic.id} data={comic} /> 
+                        <Comic 
+                            key={comic.id} 
+                            data={comic} 
+                        /> 
                     )) }
                 </ul>
                 :
