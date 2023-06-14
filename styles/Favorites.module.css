@@ -1,10 +1,39 @@
 .favoritesWrapper {
     padding: 30px;
-    background: #222222;
-    color: #F8F8F2;
-}
+    background: var(--background-dark);
+    color: var(--color-light);
+    font-family: var(--font-karla);
 
-.favoritesWrapper h3 {
-    font: normal normal 900 25px/30px Montserrat;
-    letter-spacing: 0.25px;
+    & .heading {
+        margin-bottom: 20px;
+        font-size: 25px;
+        line-height: 1.2;
+        font-weight: 900;
+        letter-spacing: 0.25px;
+    }
+ }
+  
+.favoritesItem {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 0.25fr 0.75fr;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0px;
+
+    & .img {
+        width: 100%;
+        height: auto;
+    }
+
+    & .title {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    & .label {
+        
+    }
 }

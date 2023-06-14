@@ -7,15 +7,42 @@ import styles from '../styles/Home.module.css'
 import { Comics } from '../components/Comics'
 import { Filters } from '../components/Filters';
 import { Favorites } from '../components/Favorites';
-import { useRouter } from "next/router";
 
-const FavoritesContext = createContext({
-  favorites: [],
-  setFavorites: () => {}
-});
+export type ComicType = {
+  id: string,
+  title: string,
+  thumbnail?: {
+      path: string,
+      extension: string
+  },
+  issueNumber: string,
+  publishDate?: string,
+  creators: {
+      available: number,
+      items: { name: string }[],
+  }
+}
+
+export interface ProviderProps {
+  favorites?: ComicType[],
+  setFavorites: (favorites:ComicType[]) => void
+}
+
+export const FavoritesContext = createContext<ProviderProps>(null);
+
+export const useFavorites = () => useContext(FavoritesContext);
 
 export default function Home() {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<ComicType[]>([]);
+  const ProviderValue : ProviderProps = { favorites, setFavorites };
+
+  useEffect(() => {
+    setFavorites(JSON.parse(localStorage.getItem('favorites')));
+  }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('favorites', JSON.stringify(favorites));
+  // }, [favorites])
 
   return (
       <main className={`${styles.main}`}>
@@ -34,19 +61,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.comicsListView}>
-          <div className={styles.mainPane}>
-            <Filters />
-            <Comics 
-            />
-          </div>
-          <div className={styles.favoritesPane}>
-            <section className={styles.favoritesWrapper}>
-                <h3>Favorites</h3>
-
+        <FavoritesContext.Provider value={ProviderValue}>
+            <section className={styles.comicsListView}>
+              <div className={styles.mainPane}>
+                <Filters />
+                <Comics 
+                />
+              </div>
+                <div className={styles.favoritesPane}>
+                  <Favorites />
+                </div>
             </section>
-          </div>
-        </section>
+          </FavoritesContext.Provider>
       </main>
   )
 }
