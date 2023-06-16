@@ -27,7 +27,7 @@ export const Filters = () => {
                     onChange={(e) => {
                         delete router.query.offset;
                         router.query.characters = e.target.value;
-                        router.push({ pathname: '/', query : router.query });
+                        router.push({ pathname: '/', query : router.query }, null, { shallow: true });
                     }}
                 />
 
@@ -45,7 +45,7 @@ export const Filters = () => {
                     onChange={(e) => {
                         delete router.query.offset;
                         router.query.creators = e.target.value;
-                        router.push({ pathname: '/', query : router.query });
+                        router.push({ pathname: '/', query : router.query }, null, { shallow: true });
                     }}
                 />
             </div>

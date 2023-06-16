@@ -1,10 +1,56 @@
 .main {
   margin: 0 auto;
-  max-width: 1440px
 }
 
 .header {
-  margin: 20px 0 40px;
+  position: relative;
+}
+
+.bodyContainer {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+/* Hero Slideshow */
+.heroSlideshow {
+  position: relative;
+  margin-bottom: 70px;
+
+  .borderPattern {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(25% - 15px);
+    background-image: url('/halftone.png');
+    background-size: 100%;
+  }
+
+  .heroContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 40px 70px;
+    color: var(--color-light);
+    font-size: 61px;
+    font-family: var(--font-montserrat);
+    font-weight: 900;
+    line-height: 1.2;
+    text-shadow: 3px 3px 0px #000000;
+    background: #C24868E6;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.heroSlideshow:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 30%;
+  background: transparent linear-gradient(180deg, #000000B3 0%, #00000000 100%) 0% 0% no-repeat padding-box;
 }
 
 /* Intro Container */

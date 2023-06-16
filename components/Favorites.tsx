@@ -7,7 +7,7 @@ export const Favorites = () => {
     const {favorites, setFavorites} = useFavorites();
 
 	return (
-		<section className={styles.favoritesWrapper}>
+		<section id="Favorites" className={styles.favoritesWrapper}>
 			<h3 className={styles.heading}>{`Favorites (${favorites.length})`}</h3>
 			{ favorites.length > 0 && 
 				favorites.map((comic) => {

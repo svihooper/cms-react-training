@@ -17,7 +17,7 @@ export const Pagination = ({ count, limit, offset, total }) => {
                 onClick={(e) => {
                     if (offset - limit < 0) { return; }
                     router.query.offset = (offset - limit).toString();
-                    router.push({ pathname: '/', query : router.query });
+                    router.push({ pathname: '/', query : router.query }, null, { shallow: true });
                 }}
             >
                 <i className={`${styles.icon} fas fa-angle-left`}></i>
@@ -30,7 +30,7 @@ export const Pagination = ({ count, limit, offset, total }) => {
                 onClick={(e) => {
                     if (offset + limit > total) { return }
                     router.query.offset = (offset + limit).toString();
-                    router.push({ pathname: '/', query : router.query });
+                    router.push({ pathname: '/', query : router.query }, null, { shallow: true });
                 }}
             >
                 <i className={`${styles.icon} fas fa-angle-right`}></i>
