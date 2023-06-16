@@ -26,12 +26,13 @@ export default function Button(data) {
     return (
         <button
             className={`${isActive ? styles.buttonActive : ''} ${styles.button}`}
+            title="Favorite"
             onClick={(e) => { 
                 setIsActive(favorites.includes(data.data));
                 favoritesHandler(data.data);
             }}
         >
-            <span className="material-symbols-outlined">favorite</span>
+            <i className="fas fa-bolt"></i>
         </button>
     )
 

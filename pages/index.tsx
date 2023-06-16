@@ -7,21 +7,8 @@ import styles from '../styles/Home.module.css'
 import { Comics } from '../components/Comics'
 import { Filters } from '../components/Filters';
 import { Favorites } from '../components/Favorites';
-
-export type ComicType = {
-  id: string,
-  title: string,
-  thumbnail?: {
-      path: string,
-      extension: string
-  },
-  issueNumber: string,
-  publishDate?: string,
-  creators: {
-      available: number,
-      items: { name: string }[],
-  }
-}
+import { StickyContainer, Sticky } from 'react-sticky';
+import { ComicType } from '../components/Comic';
 
 export interface ProviderProps {
   favorites?: ComicType[],
@@ -37,12 +24,9 @@ export default function Home() {
   const ProviderValue : ProviderProps = { favorites, setFavorites };
 
   useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem('favorites')));
+    const localStorageFavorites = localStorage.getItem('favorites');
+    if (localStorageFavorites.length > 0) { setFavorites(JSON.parse(localStorageFavorites)); }
   }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('favorites', JSON.stringify(favorites));
-  // }, [favorites])
 
   return (
       <main className={`${styles.main}`}>
@@ -68,9 +52,16 @@ export default function Home() {
                 <Comics 
                 />
               </div>
-                <div className={styles.favoritesPane}>
-                  <Favorites />
-                </div>
+
+              <StickyContainer>
+                <Sticky>
+                  { ({style}) => (
+                    <div style={style}>
+                      <Favorites />
+                    </div>
+                  ) }
+                </Sticky>
+              </StickyContainer>
             </section>
           </FavoritesContext.Provider>
       </main>

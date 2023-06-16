@@ -14,19 +14,19 @@ export default function Detail({ issueNumber, publishDate, creators }: ComicDeta
     return (
         <>
             <ul className={styles.detailInfo}>
-                <li>
+                <li className={styles.li}>
                     <span className={styles.label}>Issue: </span>
                     {issueNumber}
                 </li>
 
                 { publishDate &&
-                    <li>
+                    <li className={styles.li}>
                         <div className={styles.label}>Published: </div>
                         {publishDate}
                     </li>
                 }
                 { creators.available > 0 && 
-                    <li>
+                    <li className={styles.li}>
                         <div className={styles.label}>Creators:</div>
                         {creators.items.map((creator) => creator.name).join(', ')}
                     </li>

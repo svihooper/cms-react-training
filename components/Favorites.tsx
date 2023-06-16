@@ -8,7 +8,7 @@ export const Favorites = () => {
 
 	return (
 		<section className={styles.favoritesWrapper}>
-			<h3 className={styles.heading}>Favorites</h3>
+			<h3 className={styles.heading}>{`Favorites (${favorites.length})`}</h3>
 			{ favorites.length > 0 && 
 				favorites.map((comic) => {
 					return (
@@ -21,6 +21,8 @@ export const Favorites = () => {
 }
 
 function FavoriteItem({ comic }) {
+    const {favorites, setFavorites} = useFavorites();
+
 	return (
 		<div className={styles.favoritesItem} key={comic.id}>
 			<div className={styles.favoritesThumbnail}>
@@ -33,9 +35,10 @@ function FavoriteItem({ comic }) {
 				/>
 				<button 
 					className={styles.removeButton}
-					onClick={() => {}}
+					title="Remove Favorite"
+					onClick={() => setFavorites(favorites.filter((val) => val.id !== comic.id)) }
 				>
-					X
+					<i className={`${styles.buttonIcon} fas fa-times`}></i>
 				</button>
 			</div>
 			<div className={styles.favoritesContent}>

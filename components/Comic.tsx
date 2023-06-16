@@ -4,7 +4,7 @@ import Detail from '../components/Detail'
 import Button from '../components/Button'
 import styles from '../styles/Comics.module.css'
 
-type Comic = {
+export type ComicType = {
     id: string,
     title: string,
     thumbnail?: {
@@ -17,7 +17,7 @@ type Comic = {
         available: number,
         items: { name: string }[],
     }
-}
+  }
 
 export default function Comic({data}) {
     return (
